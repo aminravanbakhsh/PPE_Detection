@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+python-jose[cryptography]
+bcrypt
+python-multipart
+prometheus-fastapi-instrumentator
+slowapi
+ultralytics
+Pillow
+pydantic-settings

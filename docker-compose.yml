@@ -1,0 +1,14 @@
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./runs:/app/model:ro
+    env_file:
+      - .env
+    environment:
+      - MODEL_PATH=model/extended/weights/best.pt
+    restart: unless-stopped
