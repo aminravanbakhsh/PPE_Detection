@@ -1,0 +1,24 @@
+path: /Users/aminravanbakhsh/scripts/PPE_Detection/data/merged_resized
+train: images/train
+val: images/val
+
+nc: 18
+names:
+  - Person
+  - Head
+  - Face
+  - Glasses
+  - Face-mask-medical
+  - Face-guard
+  - Ear
+  - Earmuffs
+  - Hands
+  - Gloves
+  - Foot
+  - Shoes
+  - Safety-vest
+  - Tools
+  - Helmet
+  - Medical-suit
+  - Safety-suit
+  - Face-shield

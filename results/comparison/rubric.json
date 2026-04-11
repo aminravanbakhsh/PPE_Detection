@@ -1,0 +1,156 @@
+{
+  "baseline_file": "results/baseline/metrics_finetuned.json",
+  "extended_file": "results/extended/metrics_finetuned.json",
+  "face_shield_target": 0.65,
+  "regression_threshold": 0.03,
+  "per_class_comparison": [
+    {
+      "class": "Person",
+      "baseline_ap50": 0.8242,
+      "extended_ap50": 0.5935,
+      "diff": -0.2307,
+      "status": "FAIL"
+    },
+    {
+      "class": "Head",
+      "baseline_ap50": 0.3716,
+      "extended_ap50": 0.0,
+      "diff": -0.3716,
+      "status": "FAIL"
+    },
+    {
+      "class": "Face",
+      "baseline_ap50": 0.2418,
+      "extended_ap50": 0.0,
+      "diff": -0.2418,
+      "status": "FAIL"
+    },
+    {
+      "class": "Glasses",
+      "baseline_ap50": 0.519,
+      "extended_ap50": 0.0,
+      "diff": -0.519,
+      "status": "FAIL"
+    },
+    {
+      "class": "Face-mask-medical",
+      "baseline_ap50": 0.1279,
+      "extended_ap50": 0.0,
+      "diff": -0.1279,
+      "status": "FAIL"
+    },
+    {
+      "class": "Face-guard",
+      "baseline_ap50": 0.2409,
+      "extended_ap50": 0.0,
+      "diff": -0.2409,
+      "status": "FAIL"
+    },
+    {
+      "class": "Ear",
+      "baseline_ap50": 0.07,
+      "extended_ap50": 0.0,
+      "diff": -0.07,
+      "status": "FAIL"
+    },
+    {
+      "class": "Earmuffs",
+      "baseline_ap50": 0.2516,
+      "extended_ap50": 0.0374,
+      "diff": -0.2142,
+      "status": "FAIL"
+    },
+    {
+      "class": "Hands",
+      "baseline_ap50": 0.1631,
+      "extended_ap50": 0.0,
+      "diff": -0.1631,
+      "status": "FAIL"
+    },
+    {
+      "class": "Gloves",
+      "baseline_ap50": 0.294,
+      "extended_ap50": 0.0286,
+      "diff": -0.2654,
+      "status": "FAIL"
+    },
+    {
+      "class": "Foot",
+      "baseline_ap50": 0.3384,
+      "extended_ap50": 0.0,
+      "diff": -0.3384,
+      "status": "FAIL"
+    },
+    {
+      "class": "Shoes",
+      "baseline_ap50": 0.4417,
+      "extended_ap50": 0.0,
+      "diff": -0.4417,
+      "status": "FAIL"
+    },
+    {
+      "class": "Safety-vest",
+      "baseline_ap50": 0.6422,
+      "extended_ap50": 0.0,
+      "diff": -0.6422,
+      "status": "FAIL"
+    },
+    {
+      "class": "Tools",
+      "baseline_ap50": 0.189,
+      "extended_ap50": 0.0,
+      "diff": -0.189,
+      "status": "FAIL"
+    },
+    {
+      "class": "Helmet",
+      "baseline_ap50": 0.3382,
+      "extended_ap50": 0.0,
+      "diff": -0.3382,
+      "status": "FAIL"
+    },
+    {
+      "class": "Medical-suit",
+      "baseline_ap50": 0.1399,
+      "extended_ap50": 0.0,
+      "diff": -0.1399,
+      "status": "FAIL"
+    },
+    {
+      "class": "Safety-suit",
+      "baseline_ap50": 0.2295,
+      "extended_ap50": 0.0,
+      "diff": -0.2295,
+      "status": "FAIL"
+    },
+    {
+      "class": "Face-shield",
+      "baseline_ap50": null,
+      "extended_ap50": 0.0,
+      "diff": null,
+      "status": "FAIL"
+    }
+  ],
+  "face_shield_ap50": 0.0,
+  "face_shield_pass": false,
+  "regression_failures": [
+    "Person",
+    "Head",
+    "Face",
+    "Glasses",
+    "Face-mask-medical",
+    "Face-guard",
+    "Ear",
+    "Earmuffs",
+    "Hands",
+    "Gloves",
+    "Foot",
+    "Shoes",
+    "Safety-vest",
+    "Tools",
+    "Helmet",
+    "Medical-suit",
+    "Safety-suit"
+  ],
+  "overall": "FAIL"
+}

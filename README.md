@@ -29,15 +29,60 @@ python training/train.py --config training/configs/sh17_baseline.yaml --epochs 2
 
 # Extended (SH17 + APD, 18 classes with face shield)
 python training/train.py --config training/configs/sh17_extended.yaml --epochs 100 --device mps
+
+# command
+python training/train.py \
+  --config training/configs/sh17_baseline_resized.yaml \
+  --model yolov8m.pt \
+  --epochs 10 \
+  --batch 32 \
+  --imgsz 640 \
+  --device mps \
+  --name baseline \
+  --project runs/detect/runs \
+  --no-amp \
+  --freeze 22 \
+  --cache ram
 ```
 
-### 4. Evaluation
+### 4. Inference & Evaluation
 
 ```bash
-python training/evaluate.py --baseline runs/baseline/weights/best.pt --extended runs/extended/weights/best.pt
+# Evaluate any model on any dataset (baseline example)
+python -m inference.infer \
+  --model runs/detect/runs/baseline/weights/best.pt \
+  --data training/configs/sh17_baseline.yaml \
+  --device mps \
+  --output results_baseline.json \
+  --name baseline_eval
+
+# Same model on merged (extended) dataset
+python -m inference.infer \
+  --model runs/detect/runs/baseline/weights/best.pt \
+  --data training/configs/sh17_extended.yaml \
+  --device mps \
+  --output results_merged.json \
+  --name merged_eval
 ```
 
-### 5. API
+Key options: `--conf` (confidence threshold, default 0.25), `--iou` (NMS IoU, default 0.7), `--imgsz` (image size, default 640), `--split` (`val` or `test`), `--batch` (default 8).
+
+Outputs a JSON report with mAP\@0.5, mAP\@0.5:0.95, precision, recall, F1 (overall and per-class), plus a formatted console summary.
+
+### 5. Baseline vs Extended Comparison
+
+Compare two inference JSON reports against the rubric criteria (Face-shield mAP\@0.5 >= 0.65, no class regresses > 3pp):
+
+```bash
+python -m inference.compare \
+  --baseline results_baseline.json \
+  --extended results_extended.json \
+  --output comparison_results.json
+```
+
+Options: `--face-shield-target` (default 0.65), `--regression-threshold` (default 0.03).
+
+### 6. API
 
 ```bash
 cp .env.example .env   # edit secrets
@@ -46,7 +91,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-### 6. Docker
+### 7. Docker
 
 ```bash
 docker compose up --build
@@ -72,6 +117,10 @@ PPE_Detection/
 │   ├── prepare_data.py
 │   ├── train.py
 │   └── evaluate.py
+├── inference/              # standalone inference & metrics
+│   ├── infer.py            # CLI: evaluate any model on any dataset
+│   ├── compare.py          # CLI: baseline vs extended comparison with rubric checks
+│   └── metrics.py          # metric extraction, formatting, JSON export
 ├── api/                    # FastAPI inference service
 │   ├── app/
 │   ├── Dockerfile

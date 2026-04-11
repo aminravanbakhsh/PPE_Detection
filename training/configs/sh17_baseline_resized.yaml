@@ -1,0 +1,23 @@
+path: /Users/aminravanbakhsh/scripts/PPE_Detection/data/sh17_baseline_resized
+train: images/train
+val: images/val
+
+nc: 17
+names:
+  - Person
+  - Head
+  - Face
+  - Glasses
+  - Face-mask-medical
+  - Face-guard
+  - Ear
+  - Earmuffs
+  - Hands
+  - Gloves
+  - Foot
+  - Shoes
+  - Safety-vest
+  - Tools
+  - Helmet
+  - Medical-suit
+  - Safety-suit

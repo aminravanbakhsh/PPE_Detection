@@ -1,0 +1,152 @@
+{
+  "config": {
+    "model": "models/extended/weights/best.pt",
+    "dataset": "training/configs/sh17_extended_resized.yaml",
+    "split": "val",
+    "image_size": 640,
+    "confidence_threshold": 0.25,
+    "iou_threshold": 0.7
+  },
+  "overall": {
+    "mAP50": 0.050064203970174685,
+    "mAP75": 0.042920821429186046,
+    "mAP50_95": 0.03663694330672786,
+    "precision": 0.06623313121940391,
+    "recall": 0.047964556490568896,
+    "f1": 0.04809275528150461
+  },
+  "per_class": [
+    {
+      "class": "Person",
+      "precision": 0.7651,
+      "recall": 0.8095,
+      "f1": 0.7867,
+      "ap50": 0.5935
+    },
+    {
+      "class": "Head",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Face",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Glasses",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Face-mask-medical",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Face-guard",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Ear",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Earmuffs",
+      "precision": 0.3306,
+      "recall": 0.0092,
+      "f1": 0.0179,
+      "ap50": 0.0374
+    },
+    {
+      "class": "Hands",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Gloves",
+      "precision": 0.0965,
+      "recall": 0.0446,
+      "f1": 0.061,
+      "ap50": 0.0286
+    },
+    {
+      "class": "Foot",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Shoes",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Safety-vest",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Tools",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Helmet",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Medical-suit",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Safety-suit",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    },
+    {
+      "class": "Face-shield",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "ap50": 0.0
+    }
+  ],
+  "speed": {
+    "preprocess": 0.22,
+    "inference": 21.15,
+    "loss": 0.0,
+    "postprocess": 14.41
+  }
+}
