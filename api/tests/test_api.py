@@ -15,6 +15,15 @@ from app.main import app
 client = TestClient(app)
 
 
+class _DetectorLoadedStub:
+    """Avoid requiring weights on disk for tests that stop before inference."""
+
+    is_loaded = True
+
+    def predict(self, *args, **kwargs):
+        raise AssertionError("predict() should not run in this test")
+
+
 def _create_test_image() -> bytes:
     img = Image.new("RGB", (100, 100), color="red")
     buf = io.BytesIO()
@@ -67,7 +76,8 @@ class TestPredict:
         resp = client.post("/predict/image", files={"file": ("test.jpg", img_bytes, "image/jpeg")})
         assert resp.status_code in (401, 403)
 
-    def test_predict_invalid_file_type(self):
+    def test_predict_invalid_file_type(self, monkeypatch):
+        monkeypatch.setattr("app.routes.predict.detector", _DetectorLoadedStub())
         token = self._get_token()
         resp = client.post("/predict/image",
                            files={"file": ("test.txt", b"not an image", "text/plain")},
@@ -81,6 +91,7 @@ class TestPredict:
         assert resp.status_code == 422
 
     def test_batch_too_many_files(self, monkeypatch):
+        monkeypatch.setattr("app.routes.predict.detector", _DetectorLoadedStub())
         monkeypatch.setattr(settings, "max_batch_images", 2)
         token = self._get_token()
         img = _create_test_image()

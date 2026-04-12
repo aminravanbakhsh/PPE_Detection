@@ -2,10 +2,12 @@ import json
 import logging
 import os
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from prometheus_fastapi_instrumentator import Instrumentator
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
@@ -56,6 +58,10 @@ Instrumentator().instrument(app).expose(app, endpoint="/metrics", include_in_sch
 app.include_router(auth.router)
 app.include_router(predict.router)
 app.include_router(health.router)
+
+_web_dir = Path(__file__).resolve().parent.parent / "web"
+if _web_dir.is_dir():
+    app.mount("/ui", StaticFiles(directory=str(_web_dir), html=True), name="ui")
 
 
 @app.exception_handler(Exception)

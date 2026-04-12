@@ -42,6 +42,15 @@ async def predict_image(
     file: UploadFile = File(...),
     _user: str = Depends(get_current_user),
 ):
+    if not detector.is_loaded:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=(
+                "Inference model is not loaded. Place your YOLO weights at MODEL_PATH "
+                f"(currently {settings.model_path!r}) and restart the API. "
+                "See README (API / Docker) for mount paths."
+            ),
+        )
     data = await _validate_image(file)
     image_id = str(uuid.uuid4())
     return detector.predict(data, image_id)
@@ -54,6 +63,15 @@ async def predict_batch(
     files: list[UploadFile] = File(...),
     _user: str = Depends(get_current_user),
 ):
+    if not detector.is_loaded:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=(
+                "Inference model is not loaded. Place your YOLO weights at MODEL_PATH "
+                f"(currently {settings.model_path!r}) and restart the API. "
+                "See README (API / Docker) for mount paths."
+            ),
+        )
     if not files:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No files provided")
     if len(files) > settings.max_batch_images:

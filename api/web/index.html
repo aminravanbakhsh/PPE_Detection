@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PPE Detection API — Demo</title>
+    <link rel="stylesheet" href="/ui/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <h1>PPE Detection API demo</h1>
+        <p>
+          Same-origin calls to this server’s REST routes. OpenAPI:
+          <a href="/docs">/docs</a>
+          ·
+          <span id="token-status" class="badge">No token</span>
+        </p>
+      </header>
+
+      <section class="panel" id="panel-health">
+        <h2>GET /health</h2>
+        <p class="panel-desc">No auth — liveness and model_loaded</p>
+        <div class="row">
+          <button type="button" id="btn-health">Fetch health</button>
+        </div>
+        <pre id="out-health" class="output empty">Response appears here.</pre>
+      </section>
+
+      <section class="panel" id="panel-token">
+        <h2>POST /auth/token</h2>
+        <p class="panel-desc">JSON body: username, password → JWT</p>
+        <form id="form-token">
+          <div class="row">
+            <label>
+              Username
+              <input type="text" id="auth-user" name="username" autocomplete="username" value="admin" />
+            </label>
+            <label>
+              Password
+              <input type="password" id="auth-pass" name="password" autocomplete="current-password" />
+            </label>
+            <button type="submit">Get token</button>
+          </div>
+        </form>
+        <div class="token-row">
+          <button type="button" class="secondary" id="btn-copy-token">Copy token</button>
+          <button type="button" class="secondary" id="btn-clear-token">Clear token</button>
+          <span id="token-display" class="token-preview"></span>
+        </div>
+        <pre id="out-token" class="output empty">Response appears here.</pre>
+      </section>
+
+      <section class="panel" id="panel-predict-image">
+        <h2>POST /predict/image</h2>
+        <p class="panel-desc">multipart field <code>file</code> + Bearer JWT</p>
+        <form id="form-predict-image">
+          <div class="row">
+            <label>
+              Image
+              <input type="file" id="file-image" accept="image/jpeg,image/png,image/jpg" />
+            </label>
+            <button type="submit">Predict</button>
+          </div>
+        </form>
+        <div id="table-predict-image"></div>
+        <pre id="out-predict-image" class="output empty">Response appears here.</pre>
+      </section>
+
+      <section class="panel" id="panel-predict-batch">
+        <h2>POST /predict/batch</h2>
+        <p class="panel-desc">multipart field <code>files</code> (repeat) + Bearer JWT</p>
+        <form id="form-predict-batch">
+          <div class="row">
+            <label>
+              Images
+              <input type="file" id="files-batch" accept="image/jpeg,image/png,image/jpg" multiple />
+            </label>
+            <button type="submit">Predict batch</button>
+          </div>
+        </form>
+        <div id="table-predict-batch"></div>
+        <pre id="out-predict-batch" class="output empty">Response appears here.</pre>
+      </section>
+
+      <section class="panel" id="panel-metrics">
+        <h2>GET /metrics</h2>
+        <p class="panel-desc">Prometheus text (no auth)</p>
+        <div class="row">
+          <button type="button" id="btn-metrics">Fetch metrics</button>
+        </div>
+        <pre id="out-metrics" class="output empty">Response appears here.</pre>
+      </section>
+    </div>
+    <script src="/ui/app.js" type="module"></script>
+  </body>
+</html>

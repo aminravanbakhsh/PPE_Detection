@@ -91,6 +91,12 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
+If you prefer to stay at the repo root, use `uvicorn app.main:app --app-dir api --reload` so Python can resolve the `app` package (running `uvicorn app.main:app` from the project root without `--app-dir api` raises `ModuleNotFoundError: No module named 'app'`).
+
+If you see `ERROR: [Errno 48] Address already in use`, port 8000 is taken (often another `uvicorn` or Docker). Run `lsof -nP -iTCP:8000 -sTCP:LISTEN` to see the process, stop it, or start on a free port, e.g. `uvicorn app.main:app --reload --port 8001` (from `api/`, or add `--app-dir api` when running from the repo root).
+
+With the server running, open the browser demo at [http://localhost:8000/ui/](http://localhost:8000/ui/) (static UI under `api/web/`, mounted at `/ui`). Use **Get token** with credentials from `.env` (`API_USERNAME` / `API_PASSWORD`), then run single or batch prediction. Interactive API docs remain at [http://localhost:8000/docs](http://localhost:8000/docs).
+
 ### 7. Docker
 
 Compose mounts [`models/`](models/) at `/app/model` inside the container. Set `MODEL_PATH` in `.env` to a path under that mount (default in compose: `model/extended_20ep/weights/best.pt`). Weights files (`*.pt`) are gitignored; place your trained checkpoint under `models/.../weights/` or change the mount and `MODEL_PATH` to match your layout.
@@ -100,10 +106,13 @@ cp .env.example .env   # set JWT_SECRET_KEY, API_PASSWORD, MODEL_PATH if needed
 docker compose up --build
 ```
 
+The same [http://localhost:8000/ui/](http://localhost:8000/ui/) demo is available inside the container (UI files are copied into the image). Security notes and `curl` examples: [docs/TASK03_API_SECURITY_REPORT.md](docs/TASK03_API_SECURITY_REPORT.md).
+
 ## API Endpoints
 
 | Method | Path | Description |
 |--------|------|-------------|
+| GET | `/ui/` | Browser demo (one panel per route below; JWT stored in `sessionStorage` for the session) |
 | POST | `/auth/token` | Get JWT access token |
 | POST | `/predict/image` | Single image inference |
 | POST | `/predict/batch` | Batch image inference |
@@ -126,6 +135,7 @@ PPE_Detection/
 │   └── metrics.py          # metric extraction, formatting, JSON export
 ├── api/                    # FastAPI inference service
 │   ├── app/
+│   ├── web/                # static demo UI (served at /ui when this directory exists)
 │   ├── Dockerfile
 │   └── tests/
 ├── docs/                   # DECISIONS.md, REPORT.md
