@@ -80,6 +80,23 @@ class TestPredict:
                            headers={"Authorization": f"Bearer {token}"})
         assert resp.status_code == 422
 
+    def test_batch_too_many_files(self, monkeypatch):
+        monkeypatch.setattr(settings, "max_batch_images", 2)
+        token = self._get_token()
+        img = _create_test_image()
+        files = [
+            ("files", ("a.jpg", img, "image/jpeg")),
+            ("files", ("b.jpg", img, "image/jpeg")),
+            ("files", ("c.jpg", img, "image/jpeg")),
+        ]
+        resp = client.post(
+            "/predict/batch",
+            files=files,
+            headers={"Authorization": f"Bearer {token}"},
+        )
+        assert resp.status_code == 400
+        assert "Maximum" in resp.json().get("detail", "")
+
 
 class TestMetrics:
     def test_metrics_endpoint(self):

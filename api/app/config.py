@@ -9,6 +9,7 @@ class Settings(BaseSettings):
     api_password: str = "changeme"
     model_path: str = "model/best.pt"
     max_file_size_mb: int = 10
+    max_batch_images: int = 16
     rate_limit: str = "30/minute"
     cors_origins: str = '["http://localhost:3000"]'
 

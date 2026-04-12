@@ -1,12 +1,13 @@
+import io
 import uuid
 
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends, File, HTTPException, Request, UploadFile, status
 from PIL import Image
-import io
 
 from ..auth import get_current_user
 from ..config import settings
 from ..detector import detector
+from ..rate_limit import limiter
 from ..schemas import BatchResult, ImageResult
 
 router = APIRouter(prefix="/predict", tags=["predict"])
@@ -35,16 +36,31 @@ async def _validate_image(file: UploadFile) -> bytes:
 
 
 @router.post("/image", response_model=ImageResult)
-async def predict_image(file: UploadFile = File(...), _user: str = Depends(get_current_user)):
+@limiter.limit(settings.rate_limit)
+async def predict_image(
+    request: Request,
+    file: UploadFile = File(...),
+    _user: str = Depends(get_current_user),
+):
     data = await _validate_image(file)
     image_id = str(uuid.uuid4())
     return detector.predict(data, image_id)
 
 
 @router.post("/batch", response_model=BatchResult)
-async def predict_batch(files: list[UploadFile] = File(...), _user: str = Depends(get_current_user)):
+@limiter.limit(settings.rate_limit)
+async def predict_batch(
+    request: Request,
+    files: list[UploadFile] = File(...),
+    _user: str = Depends(get_current_user),
+):
     if not files:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No files provided")
+    if len(files) > settings.max_batch_images:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Too many files ({len(files)}). Maximum is {settings.max_batch_images}.",
+        )
 
     results = []
     total_ms = 0.0

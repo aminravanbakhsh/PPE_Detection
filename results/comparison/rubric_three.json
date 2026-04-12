@@ -1,0 +1,248 @@
+{
+  "baseline_file": "results/baseline/metrics_finetuned.json",
+  "extended_10ep_file": "results/extended/metrics_finetuned.json",
+  "extended_20ep_file": "results/extended_20ep/metrics_finetuned.json",
+  "face_shield_target": 0.65,
+  "regression_threshold": 0.03,
+  "overall_metrics": {
+    "baseline": {
+      "mAP50": 0.49449552547120323,
+      "mAP50_95": 0.3190042827443229,
+      "precision": 0.559720765611061,
+      "recall": 0.39962553107659377,
+      "f1": 0.4395221085586085
+    },
+    "extended_10ep": {
+      "mAP50": 0.5005514563252023,
+      "mAP50_95": 0.31434606304617024,
+      "precision": 0.5643495448057719,
+      "recall": 0.3993379574326204,
+      "f1": 0.4342301410408328
+    },
+    "extended_20ep": {
+      "mAP50": 0.5161283550732129,
+      "mAP50_95": 0.325719963868241,
+      "precision": 0.5679711816683324,
+      "recall": 0.4233236413136847,
+      "f1": 0.45740528919284146
+    }
+  },
+  "per_class_comparison": [
+    {
+      "class": "Ear",
+      "baseline_ap50": 0.07,
+      "extended_10ep_ap50": 0.064,
+      "diff_10ep_vs_baseline": -0.006,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.0834,
+      "diff_20ep_vs_baseline": 0.0134,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0194
+    },
+    {
+      "class": "Earmuffs",
+      "baseline_ap50": 0.2516,
+      "extended_10ep_ap50": 0.2222,
+      "diff_10ep_vs_baseline": -0.0294,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.2315,
+      "diff_20ep_vs_baseline": -0.0201,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0093
+    },
+    {
+      "class": "Face",
+      "baseline_ap50": 0.2418,
+      "extended_10ep_ap50": 0.1567,
+      "diff_10ep_vs_baseline": -0.0851,
+      "status_10ep_vs_baseline": "FAIL",
+      "extended_20ep_ap50": 0.186,
+      "diff_20ep_vs_baseline": -0.0558,
+      "status_20ep_vs_baseline": "FAIL",
+      "diff_20ep_vs_10ep": 0.0293
+    },
+    {
+      "class": "Face-guard",
+      "baseline_ap50": 0.2409,
+      "extended_10ep_ap50": 0.2348,
+      "diff_10ep_vs_baseline": -0.0061,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.2495,
+      "diff_20ep_vs_baseline": 0.0086,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0147
+    },
+    {
+      "class": "Face-mask-medical",
+      "baseline_ap50": 0.1279,
+      "extended_10ep_ap50": 0.3007,
+      "diff_10ep_vs_baseline": 0.1728,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.3061,
+      "diff_20ep_vs_baseline": 0.1782,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0054
+    },
+    {
+      "class": "Face-shield",
+      "baseline_ap50": null,
+      "extended_10ep_ap50": 0.3595,
+      "diff_10ep_vs_baseline": null,
+      "status_10ep_vs_baseline": "FAIL",
+      "extended_20ep_ap50": 0.4016,
+      "diff_20ep_vs_baseline": null,
+      "status_20ep_vs_baseline": "FAIL",
+      "diff_20ep_vs_10ep": 0.0421
+    },
+    {
+      "class": "Foot",
+      "baseline_ap50": 0.3384,
+      "extended_10ep_ap50": 0.2692,
+      "diff_10ep_vs_baseline": -0.0692,
+      "status_10ep_vs_baseline": "FAIL",
+      "extended_20ep_ap50": 0.2907,
+      "diff_20ep_vs_baseline": -0.0477,
+      "status_20ep_vs_baseline": "FAIL",
+      "diff_20ep_vs_10ep": 0.0215
+    },
+    {
+      "class": "Glasses",
+      "baseline_ap50": 0.519,
+      "extended_10ep_ap50": 0.5117,
+      "diff_10ep_vs_baseline": -0.0073,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.5269,
+      "diff_20ep_vs_baseline": 0.0079,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0152
+    },
+    {
+      "class": "Gloves",
+      "baseline_ap50": 0.294,
+      "extended_10ep_ap50": 0.3201,
+      "diff_10ep_vs_baseline": 0.0261,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.3202,
+      "diff_20ep_vs_baseline": 0.0262,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0001
+    },
+    {
+      "class": "Hands",
+      "baseline_ap50": 0.1631,
+      "extended_10ep_ap50": 0.1526,
+      "diff_10ep_vs_baseline": -0.0105,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.1782,
+      "diff_20ep_vs_baseline": 0.0151,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0256
+    },
+    {
+      "class": "Head",
+      "baseline_ap50": 0.3716,
+      "extended_10ep_ap50": 0.3651,
+      "diff_10ep_vs_baseline": -0.0065,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.3826,
+      "diff_20ep_vs_baseline": 0.011,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0175
+    },
+    {
+      "class": "Helmet",
+      "baseline_ap50": 0.3382,
+      "extended_10ep_ap50": 0.3144,
+      "diff_10ep_vs_baseline": -0.0238,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.3194,
+      "diff_20ep_vs_baseline": -0.0188,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.005
+    },
+    {
+      "class": "Medical-suit",
+      "baseline_ap50": 0.1399,
+      "extended_10ep_ap50": 0.0767,
+      "diff_10ep_vs_baseline": -0.0632,
+      "status_10ep_vs_baseline": "FAIL",
+      "extended_20ep_ap50": 0.1299,
+      "diff_20ep_vs_baseline": -0.01,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0532
+    },
+    {
+      "class": "Person",
+      "baseline_ap50": 0.8242,
+      "extended_10ep_ap50": 0.7915,
+      "diff_10ep_vs_baseline": -0.0327,
+      "status_10ep_vs_baseline": "FAIL",
+      "extended_20ep_ap50": 0.7903,
+      "diff_20ep_vs_baseline": -0.0339,
+      "status_20ep_vs_baseline": "FAIL",
+      "diff_20ep_vs_10ep": -0.0012
+    },
+    {
+      "class": "Safety-suit",
+      "baseline_ap50": 0.2295,
+      "extended_10ep_ap50": 0.2215,
+      "diff_10ep_vs_baseline": -0.008,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.2262,
+      "diff_20ep_vs_baseline": -0.0033,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0047
+    },
+    {
+      "class": "Safety-vest",
+      "baseline_ap50": 0.6422,
+      "extended_10ep_ap50": 0.6316,
+      "diff_10ep_vs_baseline": -0.0106,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.6435,
+      "diff_20ep_vs_baseline": 0.0013,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0119
+    },
+    {
+      "class": "Shoes",
+      "baseline_ap50": 0.4417,
+      "extended_10ep_ap50": 0.4332,
+      "diff_10ep_vs_baseline": -0.0085,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.4456,
+      "diff_20ep_vs_baseline": 0.0039,
+      "status_20ep_vs_baseline": "PASS",
+      "diff_20ep_vs_10ep": 0.0124
+    },
+    {
+      "class": "Tools",
+      "baseline_ap50": 0.189,
+      "extended_10ep_ap50": 0.2327,
+      "diff_10ep_vs_baseline": 0.0437,
+      "status_10ep_vs_baseline": "PASS",
+      "extended_20ep_ap50": 0.1513,
+      "diff_20ep_vs_baseline": -0.0377,
+      "status_20ep_vs_baseline": "FAIL",
+      "diff_20ep_vs_10ep": -0.0814
+    }
+  ],
+  "face_shield_ap50_10ep": 0.3595,
+  "face_shield_pass_10ep": false,
+  "face_shield_ap50_20ep": 0.4016,
+  "face_shield_pass_20ep": false,
+  "regression_failures_10ep": [
+    "Person",
+    "Face",
+    "Foot",
+    "Medical-suit"
+  ],
+  "regression_failures_20ep": [
+    "Person",
+    "Face",
+    "Foot",
+    "Tools"
+  ],
+  "overall_10ep_vs_baseline": "FAIL",
+  "overall_20ep_vs_baseline": "FAIL"
+}

@@ -135,6 +135,12 @@ def main():
         default=10,
         help="Freeze first N layers (0=none, 10=backbone, 22=all-but-head). Default 10.",
     )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume a run from last.pt (pass that path as --model). Total --epochs should be the "
+        "desired final epoch count (e.g. 20 to add 10 epochs after a finished 10-epoch run).",
+    )
     args = parser.parse_args()
 
     log_file = "02_baseline_training.log" if "baseline" in args.name else "03_extended_training.log"
@@ -207,6 +213,7 @@ def main():
         close_mosaic=0,
         exist_ok=True,
         verbose=True,
+        resume=args.resume,
     )
 
     logger.info("Training complete.")
