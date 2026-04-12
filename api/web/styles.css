@@ -216,3 +216,57 @@ table.detections th {
   color: var(--muted);
   margin-top: 0.5rem;
 }
+
+.prediction-viz {
+  margin-top: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  background: var(--bg);
+}
+
+.prediction-viz-caption {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+  word-break: break-word;
+}
+
+.prediction-canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.prediction-viz-batch-item {
+  margin-bottom: 1rem;
+}
+
+.prediction-viz-batch-item:last-child {
+  margin-bottom: 0;
+}
+
+.prediction-raw-json {
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+}
+
+.prediction-raw-json summary {
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.prediction-raw-json pre {
+  margin: 0.5rem 0 0;
+  padding: 0.65rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 0.72rem;
+  overflow: auto;
+  max-height: 16rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
