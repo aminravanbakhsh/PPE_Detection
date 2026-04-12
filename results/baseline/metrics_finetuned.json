@@ -137,9 +137,9 @@
     }
   ],
   "speed": {
-    "preprocess": 0.22,
-    "inference": 20.53,
+    "preprocess": 0.21,
+    "inference": 19.56,
     "loss": 0.0,
-    "postprocess": 14.27
+    "postprocess": 13.62
   }
 }

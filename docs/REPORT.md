@@ -54,9 +54,9 @@ python training/train.py \
   --max-det 100 --val-period 5 --freeze 22 --name baseline
 ```
 
-### Extended (full pipeline recipe — same hyperparameters, extended YAML)
+### Extended (same hyperparameters as baseline, extended YAML)
 
-The checkpoint currently under `models/extended/` was produced by an earlier **smoke** run (see `models/extended/args.yaml`: 1 epoch, `fraction=0.05`, `freeze=10`). Metrics below reflect that checkpoint. For assignment-grade extended results, retrain with:
+The checkpoint under `models/extended/` is trained with the **same 10-epoch full-data recipe** as baseline (see `logs/training_terminal/extended_train_10ep.log`). Older `models/extended/args.yaml` on disk may still reflect an earlier smoke run; trust the training log and `results/extended/metrics_finetuned.json` for the current weights.
 
 ```bash
 python training/train.py \
@@ -87,17 +87,17 @@ Metrics from `python -m inference.infer` on the **val** split, batch 8, same con
 |-------|---------|--------------|-----------|--------|-----|
 | Pretrained YOLOv8m (COCO) | 0.0537 | 0.0478 | 0.0524 | 0.0519 | 0.0521 |
 | Baseline fine-tuned | 0.4945 | 0.3190 | 0.5597 | 0.3996 | 0.4395 |
-| Extended fine-tuned (current ckpt) | 0.0501 | 0.0366 | 0.0662 | 0.0480 | 0.0481 |
+| Extended fine-tuned | 0.5006 | 0.3143 | 0.5643 | 0.3993 | 0.4342 |
 
-**Interpretation:** COCO-pretrained weights do not match SH17 class names or count; the reported per-class AP for that row is COCO-aligned and **not** a meaningful PPE benchmark—only the fine-tuned rows use the SH17 / extended taxonomies. The extended fine-tuned row is poor because the saved **extended** weights are from a **smoke** training run, not the full recipe above.
+**Interpretation:** COCO-pretrained weights do not match SH17 class names or count; the reported per-class AP for that row is COCO-aligned and **not** a meaningful PPE benchmark—only the fine-tuned rows use the SH17 / extended taxonomies. Extended fine-tuning now matches baseline overall mAP (18-class merged val) but the assignment rubric still fails on Face-shield AP@0.5 and several class regressions (see §5).
 
 ### Speed (ms/image, from JSON `speed` field)
 
 | Model | Preprocess | Inference | Postprocess |
 |-------|------------|-----------|-------------|
-| Pretrained | 0.22 | 19.75 | 14.08 |
-| Baseline fine-tuned | 0.22 | 20.53 | 14.27 |
-| Extended fine-tuned | 0.22 | 21.15 | 14.41 |
+| Pretrained | 0.22 | 19.90 | 13.82 |
+| Baseline fine-tuned | 0.21 | 19.56 | 13.62 |
+| Extended fine-tuned | 0.20 | 20.74 | 14.59 |
 
 ---
 
@@ -114,7 +114,7 @@ python -m inference.compare \
   --output results/comparison/rubric.json
 ```
 
-**Result with current checkpoints:** **FAIL** (see `results/comparison/rubric.json`). Face-shield AP@0.5 is 0.0000; all comparable classes show large drops vs baseline—consistent with an under-trained extended model. **After full extended training**, rerun `infer` + `compare` and update this section.
+**Result with current checkpoints:** **FAIL** (see `results/comparison/rubric.json`). Face-shield mAP@0.5 is **0.3595** (target ≥ 0.65). Regression failures (>3 pp drop vs baseline on shared classes): **Person, Face, Foot, Medical-suit**. Rerun `infer` + `compare` after further extended training or hyperparameter tuning if you need a passing rubric.
 
 ---
 
@@ -179,11 +179,11 @@ python -m inference.infer --model models/baseline/weights/best.pt --data trainin
 python -m inference.infer --model models/extended/weights/best.pt --data training/configs/sh17_extended_resized.yaml \
   --output results/extended/metrics_finetuned.json --project results --name extended_finetuned_eval
 
-# Rubric
+# Rubric (exits non-zero on FAIL — use `|| true` if chaining shell steps)
 python -m inference.compare \
   --baseline results/baseline/metrics_finetuned.json \
   --extended results/extended/metrics_finetuned.json \
-  --output results/comparison/rubric.json
+  --output results/comparison/rubric.json || true
 
 # Focused qualitative samples
 python -m inference.sample_predictions --model yolov8m.pt \
@@ -202,6 +202,6 @@ python -m inference.sample_predictions --model models/extended/weights/best.pt \
 ## 10. Key takeaways
 
 - **Fine-tuned baseline** substantially outperforms COCO-pretrained weights on SH17 val (expected).
-- **Extended checkpoint in-repo** is not trained with the full baseline-parity recipe; rubric comparison **fails** until extended is retrained on full data.
+- **Extended** is trained with the same 10-epoch full-data recipe as baseline; overall val mAP is in line with baseline, but the rubric still **fails** (Face-shield AP@0.5 below 0.65; regressions on Person, Face, Foot, Medical-suit).
 - **Qualitative figures** should use `sample_predictions.py` so visuals emphasize SH17 PPE and Face-shield rather than Person-only val images.
 - **API** matches the brief’s core endpoints; security and cloud notes belong in the **presentation** as well as this report.

@@ -8,145 +8,145 @@
     "iou_threshold": 0.7
   },
   "overall": {
-    "mAP50": 0.050064203970174685,
-    "mAP75": 0.042920821429186046,
-    "mAP50_95": 0.03663694330672786,
-    "precision": 0.06623313121940391,
-    "recall": 0.047964556490568896,
-    "f1": 0.04809275528150461
+    "mAP50": 0.5005514563252023,
+    "mAP75": 0.32999144790827456,
+    "mAP50_95": 0.31434606304617024,
+    "precision": 0.5643495448057719,
+    "recall": 0.3993379574326204,
+    "f1": 0.4342301410408328
   },
   "per_class": [
     {
       "class": "Person",
-      "precision": 0.7651,
-      "recall": 0.8095,
-      "f1": 0.7867,
-      "ap50": 0.5935
+      "precision": 0.8042,
+      "recall": 0.9108,
+      "f1": 0.8542,
+      "ap50": 0.7915
     },
     {
       "class": "Head",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.673,
+      "recall": 0.5093,
+      "f1": 0.5798,
+      "ap50": 0.3651
     },
     {
       "class": "Face",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.375,
+      "recall": 0.1224,
+      "f1": 0.1846,
+      "ap50": 0.1567
     },
     {
       "class": "Glasses",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.7213,
+      "recall": 0.7337,
+      "f1": 0.7274,
+      "ap50": 0.5117
     },
     {
       "class": "Face-mask-medical",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.5882,
+      "recall": 0.2381,
+      "f1": 0.339,
+      "ap50": 0.3007
     },
     {
       "class": "Face-guard",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.52,
+      "recall": 0.3444,
+      "f1": 0.4143,
+      "ap50": 0.2348
     },
     {
       "class": "Ear",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.2857,
+      "recall": 0.0268,
+      "f1": 0.0491,
+      "ap50": 0.064
     },
     {
       "class": "Earmuffs",
-      "precision": 0.3306,
-      "recall": 0.0092,
-      "f1": 0.0179,
-      "ap50": 0.0374
+      "precision": 0.4421,
+      "recall": 0.2344,
+      "f1": 0.3064,
+      "ap50": 0.2222
     },
     {
       "class": "Hands",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.4353,
+      "recall": 0.2789,
+      "f1": 0.34,
+      "ap50": 0.1526
     },
     {
       "class": "Gloves",
-      "precision": 0.0965,
-      "recall": 0.0446,
-      "f1": 0.061,
-      "ap50": 0.0286
+      "precision": 0.5861,
+      "recall": 0.3865,
+      "f1": 0.4658,
+      "ap50": 0.3201
     },
     {
       "class": "Foot",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.4962,
+      "recall": 0.4221,
+      "f1": 0.4561,
+      "ap50": 0.2692
     },
     {
       "class": "Shoes",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.6178,
+      "recall": 0.7095,
+      "f1": 0.6605,
+      "ap50": 0.4332
     },
     {
       "class": "Safety-vest",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.8118,
+      "recall": 0.8583,
+      "f1": 0.8344,
+      "ap50": 0.6316
     },
     {
       "class": "Tools",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.7143,
+      "recall": 0.1163,
+      "f1": 0.2,
+      "ap50": 0.2327
     },
     {
       "class": "Helmet",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.5502,
+      "recall": 0.5042,
+      "f1": 0.5262,
+      "ap50": 0.3144
     },
     {
       "class": "Medical-suit",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.5,
+      "recall": 0.0222,
+      "f1": 0.0426,
+      "ap50": 0.0767
     },
     {
       "class": "Safety-suit",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.4865,
+      "recall": 0.1856,
+      "f1": 0.2687,
+      "ap50": 0.2215
     },
     {
       "class": "Face-shield",
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "ap50": 0.0
+      "precision": 0.5507,
+      "recall": 0.5846,
+      "f1": 0.5672,
+      "ap50": 0.3595
     }
   ],
   "speed": {
-    "preprocess": 0.22,
-    "inference": 21.15,
+    "preprocess": 0.2,
+    "inference": 20.74,
     "loss": 0.0,
-    "postprocess": 14.41
+    "postprocess": 14.59
   }
 }

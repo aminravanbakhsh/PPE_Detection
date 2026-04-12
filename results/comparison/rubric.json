@@ -7,150 +7,137 @@
     {
       "class": "Person",
       "baseline_ap50": 0.8242,
-      "extended_ap50": 0.5935,
-      "diff": -0.2307,
+      "extended_ap50": 0.7915,
+      "diff": -0.0327,
       "status": "FAIL"
     },
     {
       "class": "Head",
       "baseline_ap50": 0.3716,
-      "extended_ap50": 0.0,
-      "diff": -0.3716,
-      "status": "FAIL"
+      "extended_ap50": 0.3651,
+      "diff": -0.0065,
+      "status": "PASS"
     },
     {
       "class": "Face",
       "baseline_ap50": 0.2418,
-      "extended_ap50": 0.0,
-      "diff": -0.2418,
+      "extended_ap50": 0.1567,
+      "diff": -0.0851,
       "status": "FAIL"
     },
     {
       "class": "Glasses",
       "baseline_ap50": 0.519,
-      "extended_ap50": 0.0,
-      "diff": -0.519,
-      "status": "FAIL"
+      "extended_ap50": 0.5117,
+      "diff": -0.0073,
+      "status": "PASS"
     },
     {
       "class": "Face-mask-medical",
       "baseline_ap50": 0.1279,
-      "extended_ap50": 0.0,
-      "diff": -0.1279,
-      "status": "FAIL"
+      "extended_ap50": 0.3007,
+      "diff": 0.1728,
+      "status": "PASS"
     },
     {
       "class": "Face-guard",
       "baseline_ap50": 0.2409,
-      "extended_ap50": 0.0,
-      "diff": -0.2409,
-      "status": "FAIL"
+      "extended_ap50": 0.2348,
+      "diff": -0.0061,
+      "status": "PASS"
     },
     {
       "class": "Ear",
       "baseline_ap50": 0.07,
-      "extended_ap50": 0.0,
-      "diff": -0.07,
-      "status": "FAIL"
+      "extended_ap50": 0.064,
+      "diff": -0.006,
+      "status": "PASS"
     },
     {
       "class": "Earmuffs",
       "baseline_ap50": 0.2516,
-      "extended_ap50": 0.0374,
-      "diff": -0.2142,
-      "status": "FAIL"
+      "extended_ap50": 0.2222,
+      "diff": -0.0294,
+      "status": "PASS"
     },
     {
       "class": "Hands",
       "baseline_ap50": 0.1631,
-      "extended_ap50": 0.0,
-      "diff": -0.1631,
-      "status": "FAIL"
+      "extended_ap50": 0.1526,
+      "diff": -0.0105,
+      "status": "PASS"
     },
     {
       "class": "Gloves",
       "baseline_ap50": 0.294,
-      "extended_ap50": 0.0286,
-      "diff": -0.2654,
-      "status": "FAIL"
+      "extended_ap50": 0.3201,
+      "diff": 0.0261,
+      "status": "PASS"
     },
     {
       "class": "Foot",
       "baseline_ap50": 0.3384,
-      "extended_ap50": 0.0,
-      "diff": -0.3384,
+      "extended_ap50": 0.2692,
+      "diff": -0.0692,
       "status": "FAIL"
     },
     {
       "class": "Shoes",
       "baseline_ap50": 0.4417,
-      "extended_ap50": 0.0,
-      "diff": -0.4417,
-      "status": "FAIL"
+      "extended_ap50": 0.4332,
+      "diff": -0.0085,
+      "status": "PASS"
     },
     {
       "class": "Safety-vest",
       "baseline_ap50": 0.6422,
-      "extended_ap50": 0.0,
-      "diff": -0.6422,
-      "status": "FAIL"
+      "extended_ap50": 0.6316,
+      "diff": -0.0106,
+      "status": "PASS"
     },
     {
       "class": "Tools",
       "baseline_ap50": 0.189,
-      "extended_ap50": 0.0,
-      "diff": -0.189,
-      "status": "FAIL"
+      "extended_ap50": 0.2327,
+      "diff": 0.0437,
+      "status": "PASS"
     },
     {
       "class": "Helmet",
       "baseline_ap50": 0.3382,
-      "extended_ap50": 0.0,
-      "diff": -0.3382,
-      "status": "FAIL"
+      "extended_ap50": 0.3144,
+      "diff": -0.0238,
+      "status": "PASS"
     },
     {
       "class": "Medical-suit",
       "baseline_ap50": 0.1399,
-      "extended_ap50": 0.0,
-      "diff": -0.1399,
+      "extended_ap50": 0.0767,
+      "diff": -0.0632,
       "status": "FAIL"
     },
     {
       "class": "Safety-suit",
       "baseline_ap50": 0.2295,
-      "extended_ap50": 0.0,
-      "diff": -0.2295,
-      "status": "FAIL"
+      "extended_ap50": 0.2215,
+      "diff": -0.008,
+      "status": "PASS"
     },
     {
       "class": "Face-shield",
       "baseline_ap50": null,
-      "extended_ap50": 0.0,
+      "extended_ap50": 0.3595,
       "diff": null,
       "status": "FAIL"
     }
   ],
-  "face_shield_ap50": 0.0,
+  "face_shield_ap50": 0.3595,
   "face_shield_pass": false,
   "regression_failures": [
     "Person",
-    "Head",
     "Face",
-    "Glasses",
-    "Face-mask-medical",
-    "Face-guard",
-    "Ear",
-    "Earmuffs",
-    "Hands",
-    "Gloves",
     "Foot",
-    "Shoes",
-    "Safety-vest",
-    "Tools",
-    "Helmet",
-    "Medical-suit",
-    "Safety-suit"
+    "Medical-suit"
   ],
   "overall": "FAIL"
 }
