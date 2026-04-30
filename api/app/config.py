@@ -30,7 +30,8 @@ class Settings(BaseSettings):
     max_file_size_mb: int = 10
     max_batch_images: int = 16
     rate_limit: str = "30/minute"
-    cors_origins: str = '["http://localhost:3000"]'
+    # Include "null" so a demo page opened as file:// can call the API (dev only).
+    cors_origins: str = '["http://localhost:3000","null"]'
 
     model_config = {"env_file": ".env", "extra": "ignore"}
 

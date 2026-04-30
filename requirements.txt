@@ -4,3 +4,4 @@ Pillow
 pyyaml
 matplotlib
 kaggle
+python-pptx

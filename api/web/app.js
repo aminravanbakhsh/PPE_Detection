@@ -1,5 +1,33 @@
 const TOKEN_KEY = "ppe_api_access_token";
 
+/**
+ * API origin for fetch(). Empty = same-origin (UI served from this app under /ui/).
+ * Use ?api=http://host:port when the page is opened as file:// or from another host.
+ */
+function apiBase() {
+  const params = new URLSearchParams(window.location.search);
+  const q = params.get("api");
+  if (q) return q.replace(/\/$/, "");
+  if (window.location.protocol === "file:") return "http://127.0.0.1:8000";
+  return "";
+}
+
+function apiUrl(path) {
+  const p = path.startsWith("/") ? path : `/${path}`;
+  const base = apiBase();
+  return base ? `${base}${p}` : p;
+}
+
+function fixLinksForFileOrigin() {
+  if (window.location.protocol !== "file:") return;
+  const base = apiBase();
+  document.querySelectorAll('a[href^="/"]').forEach((a) => {
+    a.href = `${base}${a.getAttribute("href")}`;
+  });
+}
+
+fixLinksForFileOrigin();
+
 function getToken() {
   return sessionStorage.getItem(TOKEN_KEY) || "";
 }
@@ -247,7 +275,7 @@ document.getElementById("btn-health")?.addEventListener("click", async () => {
   const out = "out-health";
   setOutput(out, "Loading…");
   try {
-    const r = await fetch("/health");
+    const r = await fetch(apiUrl("/health"));
     const body = await r.json();
     setOutput(out, JSON.stringify(body, null, 2), !r.ok);
   } catch (e) {
@@ -263,7 +291,7 @@ document.getElementById("form-token")?.addEventListener("submit", async (ev) => 
   setOutput(out, "Requesting token…");
   document.getElementById("token-display").textContent = "";
   try {
-    const r = await fetch("/auth/token", {
+    const r = await fetch(apiUrl("/auth/token"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: u, password: p }),
@@ -336,7 +364,7 @@ document.getElementById("form-predict-image")?.addEventListener("submit", async 
   const fd = new FormData();
   fd.append("file", file, file.name);
   try {
-    const r = await fetch("/predict/image", {
+    const r = await fetch(apiUrl("/predict/image"), {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: fd,
@@ -379,7 +407,7 @@ document.getElementById("form-predict-batch")?.addEventListener("submit", async 
     fd.append("files", f, f.name);
   }
   try {
-    const r = await fetch("/predict/batch", {
+    const r = await fetch(apiUrl("/predict/batch"), {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
       body: fd,
@@ -403,7 +431,7 @@ document.getElementById("btn-metrics")?.addEventListener("click", async () => {
   const out = "out-metrics";
   setOutput(out, "Loading…");
   try {
-    const r = await fetch("/metrics");
+    const r = await fetch(apiUrl("/metrics"));
     const text = await r.text();
     setOutput(out, text, !r.ok);
   } catch (e) {
