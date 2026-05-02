@@ -99,7 +99,7 @@ With the server running, open the browser demo at [http://localhost:8000/ui/](ht
 
 ### 7. Docker
 
-Compose mounts [`models/`](models/) at `/app/model` inside the container. Set `MODEL_PATH` in `.env` to a path under that mount (default in compose: `model/extended_20ep/weights/best.pt`). Weights files (`*.pt`) are gitignored; place your trained checkpoint under `models/.../weights/` or change the mount and `MODEL_PATH` to match your layout.
+Compose mounts [`models/`](models/) at `/app/model` inside the container. Set `MODEL_PATH` in `.env` to a path under that mount (default in compose: `model/extended_sh17/weights/best.pt`). Weights files (`*.pt`) are gitignored; place your trained checkpoint under `models/.../weights/` or change the mount and `MODEL_PATH` to match your layout.
 
 ```bash
 cp .env.example .env   # set JWT_SECRET_KEY, API_PASSWORD, MODEL_PATH if needed
